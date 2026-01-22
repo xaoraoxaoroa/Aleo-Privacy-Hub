@@ -215,12 +215,7 @@ Or visit [Aleo Explorer](https://testnet.explorer.provable.com) and search for t
 
 ---
 
-## License
-
-MIT
 
 ---
-
-**Built for Aleo Privacy Buildathon 2026**
 
 *Prove everything. Reveal nothing.*
