@@ -1,0 +1,31 @@
+{
+  "name": "aleo-privacy-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "5 Privacy Tools. 1 Platform. Zero Knowledge.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev -w apps/web",
+    "dev:api": "npm run dev -w apps/api",
+    "build": "npm run build -w apps/web && npm run build -w apps/api",
+    "build:web": "npm run build -w apps/web",
+    "build:api": "npm run build -w apps/api",
+    "lint": "npm run lint -w apps/web",
+    "db:push": "npm run db:push -w apps/api",
+    "db:generate": "npm run db:generate -w apps/api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@puzzlehq/aleo-wasm-web": "^0.8.1"
+  }
+}

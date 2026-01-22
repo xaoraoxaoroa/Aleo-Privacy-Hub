@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  address   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages  Message[]
+  polls     Poll[]
+  votes     Vote[]
+  notes     Note[]
+}
+
+model Message {
+  id               String   @id @default(cuid())
+  messageId        String   @unique
+  recipientId      String
+  recipient        User     @relation(fields: [recipientId], references: [id])
+  senderHash       String
+  encryptedContent String   @default("")
+  txId             String
+  createdAt        DateTime @default(now())
+
+  @@index([recipientId])
+}
+
+model Poll {
+  id        String   @id @default(cuid())
+  pollId    String   @unique
+  question  String
+  options   String
+  creatorId String
+  creator   User     @relation(fields: [creatorId], references: [id])
+  endBlock  Int
+  txId      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  votes     Vote[]
+
+  @@index([creatorId])
+}
+
+model Vote {
+  id          String   @id @default(cuid())
+  pollDbId    String
+  poll        Poll     @relation(fields: [pollDbId], references: [id])
+  voterId     String
+  voter       User     @relation(fields: [voterId], references: [id])
+  optionIndex Int
+  nullifier   String   @unique
+  txId        String
+  createdAt   DateTime @default(now())
+
+  @@index([pollDbId])
+  @@index([voterId])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  noteId    String   @unique
+  ownerId   String
+  owner     User     @relation(fields: [ownerId], references: [id])
+  txId      String
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ownerId])
+}
