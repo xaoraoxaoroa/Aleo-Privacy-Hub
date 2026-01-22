@@ -34,7 +34,7 @@ All contracts are live on **Aleo Testnet**:
 | `privypoll_v1.aleo` | `at1hkdj7fhtgdkwwt3pss4kx0azug05p2hx7hj234p8pa0qnwrw8y9sfhwmp9` |
 | `privynotes_v1.aleo` | `at13pt0a0n8urr0vlvz3a27m6ljmjrnhry7uysqclkd46yn6xt7cqgs32us58` |
 
-Verify on [Aleo Explorer](https://testnet.aleo.info)
+Verify on [Aleo Explorer](https://testnet.explorer.provable.com)
 
 ---
 
@@ -211,7 +211,7 @@ You can verify all deployments:
 curl "https://api.explorer.provable.com/v1/testnet/transaction/at1vcyrvgqmtgjxx6atv3f9zfts0ypc85uunnc35s5cumhmqcgvv5rq96xsj2"
 ```
 
-Or visit [Aleo Explorer](https://testnet.aleo.info) and search for transaction IDs.
+Or visit [Aleo Explorer](https://testnet.explorer.provable.com) and search for transaction IDs.
 
 ---
 
